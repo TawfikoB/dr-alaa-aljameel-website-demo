@@ -25,7 +25,10 @@
   .card h2{margin:.35rem 0 .4rem;font-size:1.25rem;color:var(--navy);}
   .card p{margin:0;color:var(--muted);font-size:.95rem;}
   footer{margin-top:3rem;padding-top:1.5rem;border-top:1px solid var(--line);color:var(--muted);font-size:.85rem;}
-  @media (min-width:700px){ .cards{grid-template-columns:1fr 1fr 1fr;} }
+  .card-new{border-color:#B04E20;background:#FFFDFA;}
+  .card-new .tag{color:#B04E20;}
+  @media (min-width:700px){ .cards{grid-template-columns:1fr 1fr;} }
+  @media (min-width:1000px){ .cards{grid-template-columns:repeat(4,1fr);} }
 </style>
 </head>
 <body>
@@ -33,6 +36,11 @@
     <h1>Dr. Alaa Aljameel — website demo</h1>
     <p class="sub">Three design directions for review. Same copy, credentials and bilingual EN/AR support in all three — only the visual language differs.</p>
     <div class="cards">
+      <a class="card card-new" href="v4/">
+        <span class="tag">Version 4 · newest</span>
+        <h2>Quiet premium</h2>
+        <p>Built from your three inspo sites. Warm off-white, Cormorant Garamond display, pill CTAs, generous space.</p>
+      </a>
       <a class="card" href="v1/">
         <span class="tag">Version 1</span>
         <h2>Warm pediatric</h2>

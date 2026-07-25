@@ -1,0 +1,274 @@
+/* Dr. Alaa Aljameel — Version 4 · "Quiet premium"
+   Methodology C — a system-level blend of three inspo sites:
+     · klearmindclinics.com  → warm off-white canvas, deep warm-brown ink, fully-rounded
+                               pill CTAs, large rounded media cards, very generous whitespace
+     · laserandme.com        → type pairing: Cormorant Garamond display + DM Sans body
+     · newbaymedical.com.au  → clinic information architecture
+   Fonts self-hosted (no CDN). Brand accent recoloured from Klearmind's orange to a
+   terracotta drawn from the real Confident Clinic building and Dr. Alaa's own portrait. */
+
+/* ── self-hosted fonts ─────────────────────────────────── */
+@font-face{font-family:'Cormorant Garamond';src:url('../fonts/CormorantGaramond-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant Garamond';src:url('../fonts/CormorantGaramond-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant Garamond';src:url('../fonts/CormorantGaramond-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'Cormorant Garamond';src:url('../fonts/CormorantGaramond-600.woff2') format('woff2');font-weight:600;font-style:normal;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('../fonts/DMSans-300.woff2') format('woff2');font-weight:300;font-style:normal;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('../fonts/DMSans-400.woff2') format('woff2');font-weight:400;font-style:normal;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('../fonts/DMSans-500.woff2') format('woff2');font-weight:500;font-style:normal;font-display:swap;}
+@font-face{font-family:'DM Sans';src:url('../fonts/DMSans-700.woff2') format('woff2');font-weight:700;font-style:normal;font-display:swap;}
+
+:root{
+  /* canvas — warm off-white, never stark white (Klearmind) */
+  --paper:#FFFDFA;
+  --tint:#F7F1EA;
+  --card:#FFFFFF;
+
+  /* ink — deep warm brown rather than black or navy (Klearmind) */
+  --ink:#2E1A12;
+  --ink-2:#5C4638;
+  --muted:#7A6254;      /* darkened from #8A7264 so secondary text clears WCAG AA (~5.6:1) */
+  --line:#E9DED2;
+
+  /* single warm accent, recoloured to the clinic's real terracotta.
+     #B04E20 clears WCAG AA (~5.3:1) with white text. */
+  --accent:#B04E20;
+  --accent-dark:#8E3D18;
+  --accent-soft:#F4E4DA;
+
+  --display:'Cormorant Garamond', Georgia, 'Times New Roman', serif;
+  --sans:'DM Sans', system-ui, -apple-system, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --ar:'Segoe UI', 'Noto Naskh Arabic', 'Geeza Pro', 'Traditional Arabic', Tahoma, sans-serif;
+
+  --wrap:1180px;
+  --r-pill:999px;
+  --r-lg:28px;
+  --r-md:16px;
+  --shadow:0 30px 70px -40px rgba(46,26,18,.34);
+  --shadow-soft:0 14px 40px -28px rgba(46,26,18,.30);
+}
+
+*,*::before,*::after{box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  margin:0;background:var(--paper);color:var(--ink-2);
+  font-family:var(--sans);font-size:17px;line-height:1.7;font-weight:400;
+  -webkit-font-smoothing:antialiased;overflow-x:hidden;
+}
+html[lang="ar"] body{font-family:var(--ar);line-height:1.9;}
+
+img{max-width:100%;height:auto;display:block;}
+a{color:var(--accent);}
+p{margin:0 0 1.1em;}
+
+/* ── type: large, light-weight display (Klearmind's scale, laserandme's face) ── */
+h1,h2{
+  font-family:var(--display);font-weight:300;color:var(--ink);
+  line-height:1.06;letter-spacing:-.012em;margin:0 0 .42em;
+}
+html[lang="ar"] h1,html[lang="ar"] h2{font-family:var(--ar);font-weight:600;line-height:1.4;letter-spacing:0;}
+h1{font-size:clamp(2.4rem,4.4vw,3.6rem);}
+h2{font-size:clamp(1.9rem,3.4vw,2.8rem);}
+h3{font-family:var(--sans);font-size:1.02rem;font-weight:700;color:var(--ink);margin:0 0 .4rem;letter-spacing:-.005em;}
+html[lang="ar"] h3{font-family:var(--ar);}
+
+.wrap{width:min(100% - 2.5rem, var(--wrap));margin-inline:auto;}
+section[id]{scroll-margin-top:96px;}
+
+.skip{position:absolute;inset-inline-start:0;top:-9999px;z-index:200;background:var(--ink);color:var(--paper);padding:.8rem 1.3rem;border-radius:0 0 var(--r-md) 0;}
+.skip:focus{top:0;}
+:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:6px;}
+
+.eyebrow{
+  font-size:.75rem;font-weight:500;text-transform:uppercase;letter-spacing:.2em;
+  color:var(--accent);margin:0 0 1rem;
+}
+html[lang="ar"] .eyebrow{letter-spacing:.03em;text-transform:none;font-size:.9rem;}
+.section-lede{font-size:1.08rem;color:var(--muted);max-width:44em;}
+.note{font-size:.95rem;color:var(--muted);margin-top:2.2rem;max-width:48em;}
+.head-block{max-width:46rem;margin-bottom:3rem;}
+
+/* ── pill buttons (Klearmind) ───────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.5rem;
+  padding:1rem 1.9rem;border-radius:var(--r-pill);font:inherit;font-family:var(--sans);
+  font-size:.95rem;font-weight:500;text-decoration:none;cursor:pointer;border:1px solid transparent;
+  transition:background .18s ease,border-color .18s ease,color .18s ease,transform .18s ease;
+}
+html[lang="ar"] .btn{font-family:var(--ar);}
+.btn-solid{background:var(--accent);color:#fff;}
+.btn-solid:hover{background:var(--accent-dark);transform:translateY(-1px);}
+.btn-quiet{background:transparent;color:var(--ink);border-color:var(--line);}
+.btn-quiet:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-1px);}
+.btn-sm{padding:.62rem 1.25rem;font-size:.88rem;}
+.btn-full{width:100%;}
+.link-quiet{
+  display:inline-block;margin-top:.5rem;font-weight:500;font-size:.95rem;
+  text-decoration:none;border-bottom:1px solid var(--accent-soft);padding-bottom:3px;
+}
+.link-quiet:hover{border-bottom-color:var(--accent);}
+.link-quiet::after{content:" →";}
+html[dir="rtl"] .link-quiet::after{content:" ←";}
+
+/* ── header ─────────────────────────────────────────────── */
+.site-head{
+  position:sticky;top:0;z-index:100;background:rgba(255,253,250,.88);
+  backdrop-filter:blur(14px);border-bottom:1px solid var(--line);
+}
+.head-inner{display:flex;align-items:center;gap:1.5rem;min-height:80px;position:relative;}
+.brand{display:flex;align-items:center;gap:.7rem;text-decoration:none;color:inherit;margin-inline-end:auto;}
+.brand-mark{
+  width:40px;height:40px;flex:none;border-radius:50%;background:var(--accent);color:#fff;
+  display:grid;place-items:center;font-family:var(--display);font-size:1.3rem;font-weight:500;
+}
+.brand-text{display:flex;flex-direction:column;line-height:1.25;}
+.brand-text strong{font-family:var(--display);font-size:1.2rem;font-weight:500;color:var(--ink);}
+html[lang="ar"] .brand-text strong{font-family:var(--ar);font-weight:600;font-size:1.05rem;}
+.brand-text small{font-size:.72rem;color:var(--muted);letter-spacing:.02em;}
+.nav{display:flex;gap:1.9rem;}
+.nav a{color:var(--ink-2);text-decoration:none;font-size:.93rem;font-weight:400;}
+.nav a:hover{color:var(--accent);}
+.head-actions{display:flex;align-items:center;gap:.65rem;}
+.lang-btn{
+  background:transparent;border:1px solid var(--line);border-radius:var(--r-pill);
+  padding:.5rem 1rem;font:inherit;font-family:var(--sans);font-size:.85rem;font-weight:500;
+  color:var(--ink);cursor:pointer;
+}
+.lang-btn:hover{border-color:var(--accent);color:var(--accent);}
+.menu-btn{display:none;width:42px;height:42px;border:1px solid var(--line);border-radius:50%;background:transparent;cursor:pointer;padding:0;place-items:center;gap:4px;}
+.menu-btn span{display:block;width:16px;height:1.5px;background:var(--ink);border-radius:2px;}
+
+/* ── hero: rounded media card + airy copy (Klearmind) ───── */
+.hero{padding-block:clamp(3rem,6vw,5.5rem) clamp(4rem,8vw,7rem);}
+.hero-grid{display:grid;grid-template-columns:.8fr 1.2fr;gap:clamp(2.5rem,6vw,5rem);align-items:center;}
+.hero-media{margin:0;}
+.hero-media img{
+  width:100%;max-width:400px;aspect-ratio:1;object-fit:cover;
+  border-radius:var(--r-lg);box-shadow:var(--shadow);background:var(--tint);
+}
+.lede{font-size:clamp(1.05rem,1.4vw,1.18rem);color:var(--muted);max-width:36em;margin-bottom:2rem;}
+.hero-cta{display:flex;flex-wrap:wrap;gap:.75rem;}
+.micro-trust{margin-top:1.3rem;font-size:.85rem;color:var(--muted);letter-spacing:.01em;}
+
+/* ── credential rail ────────────────────────────────────── */
+.rail{border-block:1px solid var(--line);background:var(--tint);padding-block:2.2rem;}
+.rail-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;}
+.rail-item{display:flex;flex-direction:column;gap:.3rem;text-align:center;}
+.rail-k{font-family:var(--display);font-size:1.7rem;font-weight:400;color:var(--accent);line-height:1;}
+html[lang="ar"] .rail-k{font-family:var(--ar);font-size:1.25rem;font-weight:600;}
+.rail-v{font-size:.85rem;color:var(--muted);}
+
+/* ── sections ───────────────────────────────────────────── */
+.section{padding-block:clamp(4rem,8vw,7rem);}
+.section-tint{background:var(--tint);}
+.split{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2.5rem,6vw,5rem);align-items:center;}
+.split-rev .split-copy{order:-1;}
+.split-media{margin:0;}
+.split-media img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r-lg);box-shadow:var(--shadow);}
+
+/* ── cards ──────────────────────────────────────────────── */
+.cards-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:2.1rem 1.9rem;box-shadow:var(--shadow-soft);}
+.card p{margin:0;color:var(--muted);font-size:.95rem;}
+
+/* ── services: quiet two-column list, not boxes ─────────── */
+.svc-list{list-style:none;padding:0;margin:0;display:grid;grid-template-columns:1fr 1fr;gap:0 4rem;}
+.svc-list li{border-top:1px solid var(--line);padding:1.6rem 0;}
+.svc-list p{margin:0;color:var(--muted);font-size:.93rem;}
+
+/* ── quotes ─────────────────────────────────────────────── */
+.quotes{display:grid;grid-template-columns:repeat(3,1fr);gap:1.4rem;}
+.quotes blockquote{margin:0;background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:2.2rem 2rem;}
+.quotes p{
+  font-family:var(--display);font-size:1.5rem;font-weight:400;line-height:1.3;
+  color:var(--ink);margin-bottom:1.1rem;
+}
+html[lang="ar"] .quotes p{font-family:var(--ar);font-size:1.12rem;line-height:1.8;font-weight:500;}
+.quotes footer{font-size:.78rem;text-transform:uppercase;letter-spacing:.13em;color:var(--muted);}
+html[lang="ar"] .quotes footer{text-transform:none;letter-spacing:0;font-size:.88rem;}
+
+/* ── clinic media pair ──────────────────────────────────── */
+.clinic-media{display:grid;grid-template-columns:1fr 1fr;gap:1.1rem;}
+.clinic-media figure{margin:0;}
+.clinic-media img{width:100%;aspect-ratio:3/4;object-fit:cover;border-radius:var(--r-lg);box-shadow:var(--shadow-soft);}
+.clinic-media figure:last-child{margin-top:2.6rem;}
+.addr{font-style:normal;color:var(--muted);line-height:1.85;margin-bottom:1.8rem;}
+.addr a{font-weight:500;}
+
+/* ── booking ────────────────────────────────────────────── */
+.booking{background:var(--tint);}
+.book-grid{display:grid;grid-template-columns:.9fr 1.1fr;gap:clamp(2.5rem,5vw,4.5rem);align-items:start;}
+.book-points{list-style:none;padding:0;margin:1.8rem 0 0;display:grid;gap:.8rem;}
+.book-points li{position:relative;padding-inline-start:1.6rem;font-size:.95rem;color:var(--muted);}
+.book-points li::before{content:"";position:absolute;inset-inline-start:0;top:.62em;width:7px;height:7px;border-radius:50%;background:var(--accent);}
+.book-form{background:var(--card);border:1px solid var(--line);border-radius:var(--r-lg);padding:clamp(1.8rem,3vw,2.6rem);display:grid;grid-template-columns:1fr 1fr;gap:1.2rem;box-shadow:var(--shadow-soft);}
+.field{display:flex;flex-direction:column;gap:.42rem;}
+.field-full{grid-column:1 / -1;}
+.book-form label{font-size:.84rem;font-weight:500;color:var(--ink);}
+.opt{color:var(--muted);font-weight:400;}
+.book-form input,.book-form select,.book-form textarea{
+  font:inherit;font-family:var(--sans);font-size:.95rem;padding:.85rem 1rem;
+  border:1px solid var(--line);border-radius:var(--r-md);background:var(--paper);color:var(--ink);width:100%;
+}
+html[lang="ar"] .book-form input,html[lang="ar"] .book-form select,html[lang="ar"] .book-form textarea{font-family:var(--ar);}
+.book-form textarea{resize:vertical;}
+.book-form input:focus,.book-form select:focus,.book-form textarea:focus{border-color:var(--accent);outline:none;background:#fff;}
+.book-form .btn{grid-column:1 / -1;}
+.form-foot{grid-column:1 / -1;margin:0;text-align:center;font-size:.87rem;color:var(--muted);}
+
+/* ── footer ─────────────────────────────────────────────── */
+.site-foot{background:var(--ink);color:rgba(255,253,250,.72);padding-block:4rem 1.6rem;font-size:.92rem;}
+.foot-grid{display:grid;grid-template-columns:1.6fr 1fr 1fr;gap:2.4rem;}
+.site-foot strong{color:var(--paper);display:block;margin-bottom:.6rem;font-family:var(--display);font-weight:400;font-size:1.25rem;}
+html[lang="ar"] .site-foot strong{font-family:var(--ar);font-weight:600;font-size:1.05rem;}
+.site-foot a{color:var(--accent-soft);}
+.foot-creds{font-size:.82rem;opacity:.66;}
+.foot-base{margin-top:3rem;padding-top:1.5rem;border-top:1px solid rgba(255,253,250,.14);font-size:.8rem;opacity:.6;}
+.foot-base p{margin:0;}
+
+/* ── floating whatsapp ──────────────────────────────────── */
+.wa-float{
+  position:fixed;inset-block-end:1.5rem;inset-inline-end:1.5rem;z-index:120;
+  width:54px;height:54px;border-radius:50%;background:#128C7E;color:#fff;
+  display:grid;place-items:center;box-shadow:0 14px 34px -12px rgba(18,140,126,.8);
+  transition:transform .18s ease;
+}
+.wa-float:hover{transform:scale(1.05);}
+
+/* ── responsive ─────────────────────────────────────────── */
+@media (max-width:1000px){
+  .menu-btn{display:grid;}
+  .nav{
+    position:absolute;inset-inline:0;top:100%;display:none;flex-direction:column;gap:0;
+    background:var(--paper);border-bottom:1px solid var(--line);padding:.4rem 1.25rem 1.2rem;box-shadow:var(--shadow-soft);
+  }
+  .nav.is-open{display:flex;}
+  .nav a{padding-block:.9rem;border-bottom:1px solid var(--line);}
+  .hero-grid,.split,.book-grid{grid-template-columns:1fr;}
+  .split-rev .split-copy{order:0;}
+  .hero-media{max-width:340px;}
+  .cards-3,.quotes{grid-template-columns:1fr;}
+  .rail-grid{grid-template-columns:repeat(2,1fr);gap:1.8rem;}
+  .svc-list{grid-template-columns:1fr;gap:0;}
+  .foot-grid{grid-template-columns:1fr 1fr;}
+}
+@media (max-width:620px){
+  body{font-size:16px;}
+  .head-inner{min-height:68px;gap:.5rem;}
+  .brand-text small{display:none;}
+  .brand-text strong{white-space:nowrap;font-size:1.05rem;}
+  /* hero CTAs + the floating WhatsApp button already cover booking on small screens */
+  .head-actions .btn-sm{display:none;}
+  .rail-grid{grid-template-columns:1fr;gap:1.3rem;}
+  .rail-item{flex-direction:row;align-items:baseline;gap:.8rem;text-align:start;}
+  .rail-k{font-size:1.2rem;min-width:4.5rem;}
+  .clinic-media{grid-template-columns:1fr;}
+  .clinic-media figure:last-child{margin-top:0;}
+  .split-media img,.clinic-media img{aspect-ratio:4/3;}
+  .book-form{grid-template-columns:1fr;}
+  .foot-grid{grid-template-columns:1fr;gap:1.8rem;}
+  .hero-cta .btn{width:100%;}
+}
+@media (prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto;}
+  *{transition:none!important;}
+}
