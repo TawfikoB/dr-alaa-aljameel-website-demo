@@ -33,6 +33,10 @@ the patterns that made Dr. Majid's Version Two the winning pick.
 2. **Hero portrait collided with the CTA column** on short viewports (verified at 1280×660).
    The hero content area now reserves the portrait's column so overlap is impossible.
 3. **Headline ran to 5 lines**, crowding the hero. Widened the measure to 22ch → 4 lines.
+4. **Typographic-pillars section felt arbitrary** (client feedback): the portrait floated next
+   to the first word for no stated reason, the second word got nothing, the third got an
+   orphaned caption — three inconsistent treatments with no connecting logic. Replaced with one
+   intro (label + lede) above three identical word rows.
 
 ## QA — measured, not assumed
 
