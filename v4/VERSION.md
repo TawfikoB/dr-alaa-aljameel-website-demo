@@ -1,60 +1,55 @@
 # Version 4 — "Quiet premium"
 
-**Methodology:** C — Blend of three supplied inspo sites, combined at the *system* level
+**Methodology:** C — a system-level blend of three supplied inspo sites, restructured around
+the patterns that made Dr. Majid's Version Two the winning pick.
 
-**Named direction:** A warm off-white canvas, deep warm-brown ink, a large light-weight serif
-display face, fully-rounded pill CTAs and generous whitespace. Calm, expensive-feeling and
-uncluttered — the brief was "clean and professional."
+## Where each part came from
 
-## Contribution map
-
-| Source | What it contributed |
+| Source | Contribution |
 |---|---|
-| **klearmindclinics.com** | The whole spatial system: warm off-white canvas (never stark white), deep warm-brown ink instead of black or navy, fully-rounded pill CTAs in a single warm accent, large rounded media cards, very generous vertical rhythm |
-| **laserandme.com** | The type pairing — Cormorant Garamond (light-weight serif display) over DM Sans (body). Both self-hosted from the same weights that site loads |
-| **newbaymedical.com.au** | The clinic information architecture — credentials rail, services, "why a specialist", location, booking |
+| **klearmindclinics.com** | Warm off-white canvas (never stark white), deep warm-brown ink instead of black/navy, fully-rounded pill CTAs, large rounded media, generous whitespace |
+| **laserandme.com** | Type pairing — Cormorant Garamond light-weight display over DM Sans body, both self-hosted |
+| **newbaymedical.com.au** | Clinic information architecture |
+| **Dr. Majid V2** *(the version you picked)* | Full-bleed cinematic hero with gradient scrim and bottom-aligned copy; giant watermark surname; quantified stats bar; full-bleed showcase panels; service rows that fill on hover; dot+label editorial motif; rotating "+" buttons; scroll reveals, lit-word effect and parallax; fullscreen mobile menu; footer watermark |
 
-**Where sources conflicted:** Klearmind's accent is a bright orange (`#FD8124`), which failed
-contrast with white button text and had nothing to do with this client. Recoloured to a
-terracotta (`#B04E20`) drawn from the real Confident Clinic building and Dr. Alaa's own
-portrait — same role in the system, on-brand, and it clears WCAG AA at 5.3:1.
+## Deliberately *not* carried over from Majid V2
 
-Nothing was lifted: no copy, no images, no logo treatment, no markup. The design *language*
-was transplanted onto this client's own content and assets.
+- **Stock photography.** It uses ~12 Unsplash images. The step-1 research documented stock
+  imagery as a thing that sinks clinic sites, so V4 uses only the three real Confident Clinic
+  photographs plus Dr. Alaa's portrait. Where a fourth image would have been needed, the third
+  showcase panel is a solid terracotta typographic panel instead — a design choice, not a gap.
+- **CDN dependencies.** Majid V2 loads Google Fonts, GSAP, ScrollTrigger and Lenis from three
+  external CDNs; any of them going down breaks the demo. Fonts here are self-hosted woff2, and
+  the parallax / reveals / lit-words are hand-written in ~40 lines of vanilla JS.
+- **Its green nav button** (`#25d366` with white text) measures ~2:1 contrast and fails WCAG.
+  V4's nav CTA uses the terracotta accent at 5.3:1.
+- **Its placeholder phone number** (`966500000000`). V4 uses Dr. Alaa's real number throughout.
 
-## Design decisions
+## Bugs found and fixed during this rebuild
 
-| Dimension | Choice |
-|---|---|
-| Layout | Asymmetric hero (rounded portrait card + airy copy), full-width tinted bands, split image/text sections |
-| Type | Cormorant Garamond 300 for display at ~58px, DM Sans 400 for body; ~3.4× scale ratio |
-| Colour | `#FFFDFA` paper, `#F7F1EA` tint, `#2E1A12` ink, `#B04E20` accent — one accent only |
-| Shape | Pill buttons (999px), 28px media/card radii, circular brand mark |
-| Density | Low — the airiest of the four versions |
-| Motion | Hover lifts only; honours `prefers-reduced-motion` |
+1. **Stretched portrait.** The global `img` rule was missing `height:auto`, so the HTML
+   `height="400"` attribute overrode `aspect-ratio:1` and rendered her face at 164×400 instead
+   of square. Fixed; every image re-checked for distortion.
+2. **Hero portrait collided with the CTA column** on short viewports (verified at 1280×660).
+   The hero content area now reserves the portrait's column so overlap is impossible.
+3. **Headline ran to 5 lines**, crowding the hero. Widened the measure to 22ch → 4 lines.
 
-## Fonts
+## QA — measured, not assumed
 
-Self-hosted in `fonts/` as latin-subset woff2 (8 files, ~290KB total). **No CDN dependency** —
-per the build standards, nothing external can break the demo. Arabic falls back to a system
-Arabic stack, since Cormorant Garamond has no Arabic coverage.
+- **0 contrast failures** across an exhaustive sweep of every rendered text element, using
+  correct WCAG large-text thresholds (≥24px, or ≥18.66px bold → 3:1; everything else 4.5:1)
+- Viewports 375 / 390 / 768 / 1100 / 1280 / 1440 and short-height 620–660px: no horizontal
+  scroll, no overflowing elements, no hero collisions, in **both** English and Arabic RTL
+- **Zero untranslated strings** in Arabic mode — every `data-k` node has an Arabic value
+- Portrait never rendered above its 400px native size; no distorted images anywhere
+- One `h1`, all content images have `alt`, decorative images `aria-hidden`, no dead links,
+  every external link carries `rel="noopener"`
+- Anchor jumps clear the fixed nav; language toggle round-trips exactly; fullscreen menu opens,
+  closes, traps Escape and restores scroll; WhatsApp deep link builds correctly in both languages
+- Console clean; `prefers-reduced-motion` disables all parallax and reveals
 
-## QA — verified, not assumed
+## Content flags — unchanged from V1–V3
 
-- 375 / 768 / 1440px, English **and** Arabic RTL: no horizontal scroll, no overflowing elements
-- **Zero WCAG AA contrast failures** — every text/background pair measured, lowest is 4.7:1
-- Headline sets in 3 lines at desktop; hero imbalance 91px
-- Portrait never rendered above its 400px native size (no upscaling blur)
-- One `h1`, all images have `alt`, no dead links, all external links carry `rel="noopener"`
-- Anchor jumps clear the sticky header; language toggle round-trips exactly; WhatsApp deep
-  link builds correctly in both languages
-- Console clean
-
-## Deviations & flags
-
-Same content caveats as V1–V3 — the substance is identical, only the design language changed:
-
-- `treatment-room.png` still excluded (stock-style surgical image, wrong for a pediatric brand)
-- No reviews, no pricing, no opening hours — none are verified, so none were invented
-- Service list, special-needs approach wording flagged `CONFIRM BEFORE LAUNCH` in the markup
-- `noindex` on the page while it remains an unconfirmed draft
+- No reviews, no pricing, no opening hours: none are verified, so none were invented
+- Service list and special-needs approach wording marked `CONFIRM BEFORE LAUNCH` in the markup
+- `noindex` while this remains an unconfirmed draft

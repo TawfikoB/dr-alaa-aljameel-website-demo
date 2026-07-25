@@ -12,181 +12,270 @@
 <meta property="og:image" content="assets/dr-alaa-portrait.jpg">
 <meta property="og:locale" content="en_US">
 <meta property="og:locale:alternate" content="ar_SA">
-<meta name="theme-color" content="#FFFDFA">
+<meta name="theme-color" content="#241410">
 <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'><rect width='64' height='64' rx='32' fill='%23B04E20'/><text x='32' y='44' font-size='32' text-anchor='middle' fill='%23FFFDFA' font-family='Georgia,serif'>A</text></svg>">
 <link rel="preload" href="fonts/CormorantGaramond-300.woff2" as="font" type="font/woff2" crossorigin>
 <link rel="preload" href="fonts/DMSans-400.woff2" as="font" type="font/woff2" crossorigin>
-<link rel="preload" as="image" href="assets/dr-alaa-portrait.jpg">
+<link rel="preload" as="image" href="assets/clinic-exterior.jpg">
 <link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
 <a class="skip" href="#main" data-k="skip">Skip to content</a>
 
-<header class="site-head">
-  <div class="wrap head-inner">
-    <a class="brand" href="#top">
-      <span class="brand-mark" aria-hidden="true">A</span>
-      <span class="brand-text">
-        <strong data-k="brand-name">Dr. Alaa Aljameel</strong>
-        <small data-k="brand-role">Consultant Pediatric Dentist</small>
-      </span>
-    </a>
-    <nav class="nav" id="primaryNav" aria-label="Main">
-      <a href="#about" data-k="nav-about">About</a>
-      <a href="#special" data-k="nav-special">Special Needs</a>
-      <a href="#services" data-k="nav-services">Services</a>
-      <a href="#guidance" data-k="nav-guidance">For Parents</a>
-      <a href="#clinic" data-k="nav-clinic">The Clinic</a>
-    </nav>
-    <div class="head-actions">
-      <button type="button" class="lang-btn" id="langToggle" aria-label="Switch language to Arabic">العربية</button>
-      <a class="btn btn-solid btn-sm" href="#book" data-k="nav-book">Book a visit</a>
-      <button type="button" class="menu-btn" id="menuToggle" aria-expanded="false" aria-controls="primaryNav" aria-label="Menu">
-        <span aria-hidden="true"></span><span aria-hidden="true"></span><span aria-hidden="true"></span>
-      </button>
-    </div>
+<!-- ── nav ──────────────────────────────────────────────── -->
+<nav class="nav" aria-label="Main">
+  <a class="brand" href="#top">
+    <span class="brand-name" data-k="brand-name">Dr. Alaa Aljameel</span>
+    <span class="brand-slogan" data-k="brand-role">Consultant Pediatric Dentist</span>
+  </a>
+  <div class="nav-links" id="primaryNav">
+    <a href="#about" data-k="nav-about">About</a>
+    <a href="#special" data-k="nav-special">Special Needs</a>
+    <a href="#services" data-k="nav-services">Services</a>
+    <a href="#guidance" data-k="nav-guidance">For Parents</a>
+    <a href="#clinic" data-k="nav-clinic">The Clinic</a>
   </div>
-</header>
+  <div class="nav-actions">
+    <button type="button" class="lang-btn" id="langToggle" aria-label="Switch language to Arabic">العربية</button>
+    <a class="nav-book" href="#book" data-k="nav-book">Book a visit</a>
+    <button class="burger" id="menuToggle" aria-expanded="false" aria-controls="fullMenu" aria-label="Menu">
+      <span class="burger-lines" aria-hidden="true"><span></span><span></span></span>
+      <span class="burger-label" data-k="menu-label">Menu</span>
+    </button>
+  </div>
+</nav>
+
+<!-- ── fullscreen menu ──────────────────────────────────── -->
+<div class="menu" id="fullMenu" hidden>
+  <button class="menu-close" id="menuClose" data-k="menu-close">Close</button>
+  <a href="#about" data-k="nav-about">About</a>
+  <a href="#special" data-k="nav-special">Special Needs</a>
+  <a href="#services" data-k="nav-services">Services</a>
+  <a href="#guidance" data-k="nav-guidance">For Parents</a>
+  <a href="#clinic" data-k="nav-clinic">The Clinic</a>
+  <a href="#book" data-k="nav-book">Book a visit</a>
+  <div class="menu-contact">
+    <a href="tel:+966593339600" dir="ltr">+966 59 333 9600</a>
+    <a href="https://www.instagram.com/dr.alaaaljameel/" target="_blank" rel="noopener noreferrer" dir="ltr">@dr.alaaaljameel</a>
+  </div>
+</div>
 
 <main id="main">
 
-  <!-- ── hero ─────────────────────────────────────────────── -->
-  <section class="hero" id="top">
-    <div class="wrap hero-grid">
-      <figure class="hero-media">
-        <img src="assets/dr-alaa-portrait.jpg" width="400" height="400"
-             alt="Dr. Alaa Aljameel, consultant pediatric dentist in Riyadh">
-      </figure>
-      <div class="hero-copy">
-        <p class="eyebrow" data-k="hero-eyebrow">Riyadh · At Taawun</p>
-        <h1 data-k="hero-h1">Specialist dental care for every child in Riyadh — including children with special needs</h1>
-        <p class="lede" data-k="hero-lede">I'm Dr. Alaa Aljameel, a consultant pediatric dentist. I look after children's teeth the gentle way — with the time, patience and specialist training that a child's first experiences of dentistry deserve.</p>
-        <div class="hero-cta">
-          <a class="btn btn-solid" href="#book" data-k="cta-book">Book a visit on WhatsApp</a>
-          <a class="btn btn-quiet" href="tel:+966593339600" data-k="cta-call">Call +966 59 333 9600</a>
+  <!-- ── hero: full-bleed, real clinic building ─────────── -->
+  <header class="hero" id="top">
+    <div class="hero-bg"><img src="assets/clinic-exterior.jpg" width="900" height="1600" alt="" aria-hidden="true"></div>
+    <div class="hero-watermark" aria-hidden="true" data-k="watermark">ALJAMEEL</div>
+
+    <figure class="hero-portrait">
+      <img src="assets/dr-alaa-portrait.jpg" width="400" height="400"
+           alt="Dr. Alaa Aljameel, consultant pediatric dentist in Riyadh">
+    </figure>
+
+    <div class="hero-inner">
+      <p class="label label-light"><span class="dot" aria-hidden="true"></span><span data-k="hero-eyebrow">Riyadh · At Taawun</span></p>
+      <h1 data-k="hero-h1">Specialist dental care for every child in Riyadh — including children with special needs</h1>
+      <div class="hero-rule"></div>
+      <div class="hero-details">
+        <div class="hero-disciplines">
+          <a class="disc" href="#services"><span data-k="disc-1">Pediatric dentistry</span><span class="explore" data-k="explore">Explore +</span></a>
+          <a class="disc" href="#special"><span data-k="disc-2">Special-needs dentistry</span><span class="explore" data-k="explore">Explore +</span></a>
+          <a class="disc" href="#guidance"><span data-k="disc-3">Preventive care</span><span class="explore" data-k="explore">Explore +</span></a>
         </div>
-        <p class="micro-trust" data-k="hero-trust">Consultant-level care · Special-needs trained · Arabic &amp; English</p>
+        <div class="hero-recognition">
+          <span class="label-text" data-k="lbl-cred">Credentials</span>
+          <div data-k="t1-lbl">American Board certified</div>
+          <div data-k="t2-lbl">Canadian Fellowship, RCDC</div>
+          <div data-k="t3-lbl">Master's + pediatric certificate</div>
+          <div data-k="t4-lbl">Care in Arabic &amp; English</div>
+        </div>
+        <div class="hero-cta">
+          <a class="action-btn action-light" href="#book"><span class="plus" aria-hidden="true">+</span><span data-k="cta-book">Book a visit on WhatsApp</span></a>
+          <a class="hero-tel" href="tel:+966593339600" dir="ltr">+966 59 333 9600</a>
+        </div>
       </div>
     </div>
-  </section>
+  </header>
 
-  <!-- ── credential rail ──────────────────────────────────── -->
-  <section class="rail" aria-label="Credentials">
-    <div class="wrap rail-grid">
-      <div class="rail-item"><span class="rail-k" data-k="t1-num">USA</span><span class="rail-v" data-k="t1-lbl">American Board certified</span></div>
-      <div class="rail-item"><span class="rail-k" data-k="t2-num">CAN</span><span class="rail-v" data-k="t2-lbl">Canadian Fellowship, RCDC</span></div>
-      <div class="rail-item"><span class="rail-k" data-k="t3-num">MSc</span><span class="rail-v" data-k="t3-lbl">Master's + pediatric certificate</span></div>
-      <div class="rail-item"><span class="rail-k" data-k="t4-num">AR / EN</span><span class="rail-v" data-k="t4-lbl">Care in Arabic &amp; English</span></div>
+  <!-- ── quantified credentials bar ─────────────────────── -->
+  <section class="stats" aria-label="Credentials at a glance">
+    <p class="label label-light stats-label"><span class="dot" aria-hidden="true"></span><span data-k="lbl-glance">At a glance</span></p>
+    <div class="stats-grid">
+      <div class="stat reveal"><div class="stat-n" data-k="s1-n">2×</div><div class="stat-c" data-k="s1-c">Board-level certifications</div></div>
+      <div class="stat reveal"><div class="stat-n" data-k="s2-n">2</div><div class="stat-c" data-k="s2-c">Specialties: children &amp; special needs</div></div>
+      <div class="stat reveal"><div class="stat-n" data-k="s3-n">MSc</div><div class="stat-c" data-k="s3-c">Master's + pediatric certificate</div></div>
+      <div class="stat reveal"><div class="stat-n" data-k="s4-n">2</div><div class="stat-c" data-k="s4-c">Languages in the clinic</div></div>
+      <div class="stat reveal"><div class="stat-n" data-k="s5-n">Riyadh</div><div class="stat-c" data-k="s5-c">At Taawun, Northern Ring Rd</div></div>
     </div>
   </section>
 
-  <!-- ── about ────────────────────────────────────────────── -->
-  <section class="section" id="about">
-    <div class="wrap split">
-      <figure class="split-media">
-        <img src="assets/clinic-interior.jpg" width="900" height="1600" loading="lazy"
-             alt="Treatment room at Confident Clinic, with a screen mounted above the dental chair">
-      </figure>
-      <div class="split-copy">
-        <p class="eyebrow" data-k="about-eyebrow">Why a specialist</p>
-        <h2 data-k="about-h2">A children's dentist is not just a dentist who sees children</h2>
-        <p data-k="about-p1">Pediatric dentistry is its own specialty. It covers how children's teeth grow, how habits shape a jaw, how to treat a nervous four-year-old without frightening them, and how to spot the problems that only show up in a growing mouth.</p>
-        <p data-k="about-p2">My training is in exactly that: a Bachelor of Dental Surgery, a Master's degree, a pediatric dentistry certificate, American Board certification and a Canadian Fellowship from the Royal College of Dentists of Canada.</p>
-        <p data-k="about-p3">What that means for your child is simple — unhurried appointments, explanations before anything happens, and a dentist who has seen this exact worry many times before.</p>
-        <a class="link-quiet" href="#book" data-k="about-link">Book your child's visit</a>
+  <!-- ── about ──────────────────────────────────────────── -->
+  <section class="split" id="about">
+    <div class="split-copy reveal">
+      <p class="label"><span class="dot" aria-hidden="true"></span><span data-k="about-eyebrow">Why a specialist</span></p>
+      <h2 data-k="about-h2">A children's dentist is not just a dentist who sees children</h2>
+      <p data-k="about-p1">Pediatric dentistry is its own specialty. It covers how children's teeth grow, how habits shape a jaw, how to treat a nervous four-year-old without frightening them, and how to spot the problems that only show up in a growing mouth.</p>
+      <p data-k="about-p2">My training is in exactly that: a Bachelor of Dental Surgery, a Master's degree, a pediatric dentistry certificate, American Board certification and a Canadian Fellowship from the Royal College of Dentists of Canada.</p>
+      <div class="about-action">
+        <a class="action-btn" href="#book"><span class="plus" aria-hidden="true">+</span><span data-k="about-link">Book your child's visit</span></a>
       </div>
     </div>
+    <figure class="parallax reveal">
+      <img src="assets/clinic-interior.jpg" width="900" height="1600" loading="lazy"
+           alt="Treatment room at Confident Clinic, with a screen mounted above the dental chair">
+    </figure>
   </section>
 
-  <!-- ── special needs ────────────────────────────────────── -->
-  <!-- CONFIRM BEFORE LAUNCH: the three cards below describe a standard specialist approach
+  <!-- ── typographic pillars ────────────────────────────── -->
+  <section class="typo">
+    <div class="typo-row reveal">
+      <span class="typo-img"><img src="assets/dr-alaa-portrait.jpg" width="400" height="400" loading="lazy" alt="" aria-hidden="true"></span>
+      <span class="typo-word" data-k="typo-1">Gentle</span>
+    </div>
+    <div class="typo-row reveal">
+      <span class="typo-word" data-k="typo-2">Specialist</span>
+    </div>
+    <div class="typo-row typo-last reveal">
+      <span class="typo-word" data-k="typo-3">Unhurried</span>
+      <span class="typo-note" data-k="typo-note">Three things every appointment is built around — whatever your child walks in worried about.</span>
+    </div>
+  </section>
+
+  <!-- ── special needs, as full-bleed panels ────────────── -->
+  <!-- CONFIRM BEFORE LAUNCH: the three panels below describe a standard specialist approach
        (familiarisation visits, predictable routine, parental involvement). Have Dr. Alaa
        review the wording so it matches how she actually runs an appointment. -->
-  <section class="section section-tint" id="special">
-    <div class="wrap">
-      <div class="head-block">
-        <p class="eyebrow" data-k="sp-eyebrow">A particular focus</p>
-        <h2 data-k="sp-h2">Dentistry for children with special needs</h2>
-        <p class="section-lede" data-k="sp-lede">Alongside pediatric dentistry, I am a consultant in dentistry for people with special needs. Many families are told their child is "too difficult" to treat. Usually what's needed is more time, a different approach, and someone trained for it.</p>
-      </div>
-      <div class="cards-3">
-        <article class="card"><h3 data-k="sp-c1-h">Time, not rushing</h3><p data-k="sp-c1-p">Appointments paced to your child rather than to a schedule — including short familiarisation visits where nothing clinical happens at all.</p></article>
-        <article class="card"><h3 data-k="sp-c2-h">A predictable routine</h3><p data-k="sp-c2-p">The same room, the same order of events, explained step by step beforehand, so there are as few surprises as possible.</p></article>
-        <article class="card"><h3 data-k="sp-c3-h">Parents stay involved</h3><p data-k="sp-c3-p">You know your child best. Tell me what calms them and what sets them off, and we build the visit around that.</p></article>
-      </div>
-      <p class="note" data-k="sp-note">If your child has a sensory, developmental or medical condition that has made dental visits hard before, tell me about it when you book — that conversation is genuinely useful.</p>
+  <section class="showcase" id="special">
+    <div class="showcase-intro reveal">
+      <p class="label"><span class="dot" aria-hidden="true"></span><span data-k="sp-eyebrow">A particular focus</span></p>
+      <h2 data-k="sp-h2">Dentistry for children with special needs</h2>
+      <p class="lede" data-k="sp-lede">Alongside pediatric dentistry, I am a consultant in dentistry for people with special needs. Many families are told their child is "too difficult" to treat. Usually what's needed is more time, a different approach, and someone trained for it.</p>
     </div>
-  </section>
 
-  <!-- ── services ─────────────────────────────────────────── -->
-  <!-- CONFIRM BEFORE LAUNCH: service list reflects a standard consultant pediatric scope.
-       Confirm with Dr. Alaa exactly which of these she offers at Confident Clinic. -->
-  <section class="section" id="services">
-    <div class="wrap">
-      <div class="head-block">
-        <p class="eyebrow" data-k="sv-eyebrow">What I do</p>
-        <h2 data-k="sv-h2">Care for children, from the first tooth onward</h2>
-      </div>
-      <ul class="svc-list">
-        <li><h3 data-k="sv-1-h">First visits &amp; check-ups</h3><p data-k="sv-1-p">A gentle introduction to the dentist, ideally before anything hurts.</p></li>
-        <li><h3 data-k="sv-2-h">Fluoride &amp; sealants</h3><p data-k="sv-2-p">Simple, quick preventive treatments that stop cavities before they start.</p></li>
-        <li><h3 data-k="sv-3-h">Fillings &amp; restorations</h3><p data-k="sv-3-p">For baby and permanent teeth, done in a way children can cope with.</p></li>
-        <li><h3 data-k="sv-4-h">Special-needs dental care</h3><p data-k="sv-4-p">Consultant-level care adapted to your child's needs and tolerances.</p></li>
-        <li><h3 data-k="sv-5-h">Dental anxiety &amp; behaviour guidance</h3><p data-k="sv-5-p">For the child who has had a bad experience, or has never been at all.</p></li>
-        <li><h3 data-k="sv-6-h">Growth &amp; habit monitoring</h3><p data-k="sv-6-p">Thumb-sucking, late or crowded teeth, and how a bite is developing.</p></li>
-        <li><h3 data-k="sv-7-h">Preventive advice for parents</h3><p data-k="sv-7-p">Brushing, diet and fluoride guidance that fits a real family routine.</p></li>
-        <li><h3 data-k="sv-8-h">Dental emergencies</h3><p data-k="sv-8-p">Knocked-out, broken or painful teeth — call as soon as you can.</p></li>
-      </ul>
-      <!-- CONFIRM BEFORE LAUNCH: no pricing published. Confirm whether to show fees or a "from" range. -->
-    </div>
-  </section>
-
-  <!-- ── parents / quotes ─────────────────────────────────── -->
-  <section class="section section-tint" id="guidance">
-    <div class="wrap">
-      <div class="head-block">
-        <p class="eyebrow" data-k="g-eyebrow">In my own words</p>
-        <h2 data-k="g-h2">Three things I tell parents constantly</h2>
-      </div>
-      <div class="quotes">
-        <blockquote><p data-k="q1">“Kids are often easier to work with if they sense calmness and reassurance from their parents.”</p><footer data-k="q1-f">On coming to an appointment</footer></blockquote>
-        <blockquote><p data-k="q2">“When a child loses a tooth, the first thing is to stay calm.”</p><footer data-k="q2-f">On dental accidents</footer></blockquote>
-        <blockquote><p data-k="q3">“Fluoride isn't something to be afraid of — it's a natural substance that helps strengthen teeth.”</p><footer data-k="q3-f">On prevention</footer></blockquote>
-      </div>
-      <p class="note" data-k="g-note">I share short guidance for parents on Instagram —
-        <a href="https://www.instagram.com/dr.alaaaljameel/" target="_blank" rel="noopener noreferrer">@dr.alaaaljameel</a>.
-      </p>
-    </div>
-  </section>
-
-  <!-- ── clinic ───────────────────────────────────────────── -->
-  <section class="section" id="clinic">
-    <div class="wrap split split-rev">
-      <div class="split-copy">
-        <p class="eyebrow" data-k="cl-eyebrow">Where to find me</p>
-        <h2 data-k="cl-h2">Confident Clinic, At Taawun</h2>
-        <p data-k="cl-p1">I see children at Confident Clinic on the Northern Ring Road in At Taawun, Riyadh — a purpose-built practice with modern treatment rooms, including screens above the chairs to keep young patients occupied.</p>
-        <address class="addr">
-          <span data-k="cl-addr">Confident Clinic, Northern Ring Road, At Taawun, Riyadh 12478, Saudi Arabia</span><br>
-          <a href="tel:+966593339600">+966 59 333 9600</a>
-        </address>
-        <div class="hero-cta">
-          <a class="btn btn-solid" href="#book" data-k="cl-cta">Book a visit</a>
-          <a class="btn btn-quiet" href="https://confident.sa/" target="_blank" rel="noopener noreferrer" data-k="cl-link">Visit Confident Clinic</a>
+    <article class="panel">
+      <div class="panel-bg"><img src="assets/clinic-interior.jpg" width="900" height="1600" loading="lazy" alt="" aria-hidden="true"></div>
+      <p class="label label-light panel-label"><span class="dot" aria-hidden="true"></span><span data-k="pn-1">Pace</span></p>
+      <div class="panel-body">
+        <h3 class="panel-title" data-k="sp-c1-h">Time, not rushing</h3>
+        <div class="panel-foot">
+          <p data-k="sp-c1-p">Appointments paced to your child rather than to a schedule — including short familiarisation visits where nothing clinical happens at all.</p>
+          <span class="panel-plus" aria-hidden="true">+</span>
         </div>
       </div>
-      <div class="clinic-media">
-        <figure><img src="assets/clinic-exterior.jpg" width="900" height="1600" loading="lazy" alt="Exterior of Confident Clinic in Riyadh"></figure>
-        <figure><img src="assets/clinic-reception.jpg" width="900" height="1600" loading="lazy" alt="Reception area at Confident Clinic"></figure>
+    </article>
+
+    <article class="panel">
+      <div class="panel-bg"><img src="assets/clinic-reception.jpg" width="900" height="1600" loading="lazy" alt="" aria-hidden="true"></div>
+      <p class="label label-light panel-label"><span class="dot" aria-hidden="true"></span><span data-k="pn-2">Routine</span></p>
+      <div class="panel-body">
+        <h3 class="panel-title" data-k="sp-c2-h">A predictable routine</h3>
+        <div class="panel-foot">
+          <p data-k="sp-c2-p">The same room, the same order of events, explained step by step beforehand, so there are as few surprises as possible.</p>
+          <span class="panel-plus" aria-hidden="true">+</span>
+        </div>
+      </div>
+    </article>
+
+    <article class="panel panel-solid">
+      <p class="label label-light panel-label"><span class="dot" aria-hidden="true"></span><span data-k="pn-3">Partnership</span></p>
+      <div class="panel-body">
+        <h3 class="panel-title" data-k="sp-c3-h">Parents stay involved</h3>
+        <div class="panel-foot">
+          <p data-k="sp-c3-p">You know your child best. Tell me what calms them and what sets them off, and we build the visit around that.</p>
+          <span class="panel-plus" aria-hidden="true">+</span>
+        </div>
+      </div>
+    </article>
+
+    <p class="showcase-note reveal" data-k="sp-note">If your child has a sensory, developmental or medical condition that has made dental visits hard before, tell me about it when you book — that conversation is genuinely useful.</p>
+  </section>
+
+  <!-- ── quote ──────────────────────────────────────────── -->
+  <section class="quote">
+    <figure class="quote-img reveal"><img src="assets/dr-alaa-portrait.jpg" width="400" height="400" loading="lazy" alt="Dr. Alaa Aljameel"></figure>
+    <div class="reveal">
+      <div class="quote-rule"></div>
+      <div class="quote-mark" aria-hidden="true">“</div>
+      <blockquote class="quote-text"><p data-k="q1-plain">Kids are often easier to work with if they sense calmness and reassurance from their parents.</p></blockquote>
+      <div class="quote-name">
+        <strong data-k="foot-name">Dr. Alaa Aljameel</strong>
+        <span class="dot" aria-hidden="true"></span>
+        <span class="role" data-k="foot-role">Consultant Pediatric Dentist &amp; Special Needs Dentistry Consultant</span>
       </div>
     </div>
   </section>
 
-  <!-- ── booking ──────────────────────────────────────────── -->
-  <section class="section booking" id="book">
-    <div class="wrap book-grid">
-      <div class="book-copy">
-        <p class="eyebrow" data-k="bk-eyebrow">Booking</p>
+  <!-- ── expertise + services ───────────────────────────── -->
+  <!-- CONFIRM BEFORE LAUNCH: service list reflects a standard consultant pediatric scope.
+       Confirm with Dr. Alaa exactly which of these she offers at Confident Clinic. -->
+  <section class="expertise" id="services">
+    <div class="expertise-head">
+      <h2 class="reveal" data-k="sv-h2">Care for children, from the first tooth onward</h2>
+      <p class="label label-light reveal"><span class="dot" aria-hidden="true"></span><span data-k="sv-eyebrow">What I do</span></p>
+    </div>
+    <div class="reveal-words">
+      <div class="rw" data-k="rw-1">Prevent</div>
+      <div class="rw" data-k="rw-2">Treat</div>
+      <div class="rw rw-img"><span data-k="rw-3">Reassure</span><span class="rw-thumb"><img src="assets/clinic-interior.jpg" width="900" height="1600" loading="lazy" alt="" aria-hidden="true"></span></div>
+    </div>
+    <ul class="svc-rows">
+      <li class="svc-row"><span class="svc-name" data-k="sv-1-h">First visits &amp; check-ups</span><span class="svc-meta" data-k="sv-1-p">A gentle introduction to the dentist</span></li>
+      <li class="svc-row"><span class="svc-name" data-k="sv-2-h">Fluoride &amp; sealants</span><span class="svc-meta" data-k="sv-2-p">Preventive treatment before cavities start</span></li>
+      <li class="svc-row"><span class="svc-name" data-k="sv-3-h">Fillings &amp; restorations</span><span class="svc-meta" data-k="sv-3-p">Baby and permanent teeth</span></li>
+      <li class="svc-row"><span class="svc-name" data-k="sv-4-h">Special-needs dental care</span><span class="svc-meta" data-k="sv-4-p">Consultant-level, adapted to your child</span></li>
+      <li class="svc-row"><span class="svc-name" data-k="sv-5-h">Dental anxiety &amp; behaviour guidance</span><span class="svc-meta" data-k="sv-5-p">For the child who is frightened</span></li>
+      <li class="svc-row"><span class="svc-name" data-k="sv-6-h">Growth &amp; habit monitoring</span><span class="svc-meta" data-k="sv-6-p">Thumb-sucking, crowding, bite development</span></li>
+      <li class="svc-row"><span class="svc-name" data-k="sv-7-h">Preventive advice for parents</span><span class="svc-meta" data-k="sv-7-p">Brushing, diet and fluoride guidance</span></li>
+      <li class="svc-row"><span class="svc-name" data-k="sv-8-h">Dental emergencies</span><span class="svc-meta" data-k="sv-8-p">Knocked-out, broken or painful teeth</span></li>
+    </ul>
+    <!-- CONFIRM BEFORE LAUNCH: no pricing published. Confirm whether to show fees or a "from" range. -->
+  </section>
+
+  <!-- ── parents ────────────────────────────────────────── -->
+  <section class="guidance" id="guidance">
+    <div class="guidance-head reveal">
+      <p class="label"><span class="dot" aria-hidden="true"></span><span data-k="g-eyebrow">In my own words</span></p>
+      <h2 data-k="g-h2">Three things I tell parents constantly</h2>
+    </div>
+    <div class="g-grid">
+      <article class="g-card reveal"><p data-k="q1">“Kids are often easier to work with if they sense calmness and reassurance from their parents.”</p><footer data-k="q1-f">On coming to an appointment</footer></article>
+      <article class="g-card reveal"><p data-k="q2">“When a child loses a tooth, the first thing is to stay calm.”</p><footer data-k="q2-f">On dental accidents</footer></article>
+      <article class="g-card reveal"><p data-k="q3">“Fluoride isn't something to be afraid of — it's a natural substance that helps strengthen teeth.”</p><footer data-k="q3-f">On prevention</footer></article>
+    </div>
+    <p class="note reveal" data-k="g-note">I share short guidance for parents on Instagram —
+      <a href="https://www.instagram.com/dr.alaaaljameel/" target="_blank" rel="noopener noreferrer">@dr.alaaaljameel</a>.
+    </p>
+  </section>
+
+  <!-- ── visit the clinic ───────────────────────────────── -->
+  <section class="visit" id="clinic">
+    <div class="visit-head reveal">
+      <p class="label"><span class="dot" aria-hidden="true"></span><span data-k="cl-eyebrow">Where to find me</span></p>
+      <h2 data-k="cl-h2">Confident Clinic, At Taawun</h2>
+      <p class="lede" data-k="cl-p1">I see children at Confident Clinic on the Northern Ring Road in At Taawun, Riyadh — a purpose-built practice with modern treatment rooms, including screens above the chairs to keep young patients occupied.</p>
+    </div>
+    <div class="visit-grid">
+      <figure class="visit-photo reveal"><img src="assets/clinic-exterior.jpg" width="900" height="1600" loading="lazy" alt="Exterior of Confident Clinic in Riyadh"></figure>
+      <figure class="visit-photo reveal"><img src="assets/clinic-reception.jpg" width="900" height="1600" loading="lazy" alt="Reception area at Confident Clinic"></figure>
+      <div class="visit-info reveal">
+        <div>
+          <p class="label label-light"><span class="dot" aria-hidden="true"></span><span data-k="lbl-clinic">Confident Clinic</span></p>
+          <address class="visit-addr" data-k="cl-addr">Confident Clinic, Northern Ring Road, At Taawun, Riyadh 12478, Saudi Arabia</address>
+        </div>
+        <div class="visit-actions">
+          <a href="https://www.google.com/maps/search/?api=1&amp;query=Confident+Clinic+Northern+Ring+Road+At+Taawun+Riyadh" target="_blank" rel="noopener noreferrer"><span class="plus" aria-hidden="true">+</span><span data-k="visit-map">Get directions</span></a>
+          <a href="tel:+966593339600"><span class="plus" aria-hidden="true">+</span><span data-k="visit-call">Call the clinic</span></a>
+          <a href="https://confident.sa/" target="_blank" rel="noopener noreferrer"><span class="plus" aria-hidden="true">+</span><span data-k="cl-link">Visit Confident Clinic</span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ── booking ────────────────────────────────────────── -->
+  <section class="booking" id="book">
+    <div class="book-grid">
+      <div class="book-copy reveal">
+        <p class="label label-light"><span class="dot" aria-hidden="true"></span><span data-k="bk-eyebrow">Booking</span></p>
         <h2 data-k="bk-h2">Tell me about your child</h2>
         <p data-k="bk-p">Fill this in and it opens WhatsApp with your message ready to send — so I know who I'm seeing before you arrive. Nothing is submitted to a website; it goes straight to my phone.</p>
         <ul class="book-points">
@@ -195,7 +284,7 @@
           <li data-k="bk-l3">Emergencies: call rather than message</li>
         </ul>
       </div>
-      <form class="book-form" id="bookForm" novalidate>
+      <form class="book-form reveal" id="bookForm" novalidate>
         <div class="field">
           <label for="childName" data-k="f-name">Child's first name <span class="opt">(optional)</span></label>
           <input type="text" id="childName" name="childName" autocomplete="off">
@@ -228,7 +317,7 @@
           <label for="notes" data-k="f-notes">Anything I should know? <span class="opt">(optional)</span></label>
           <textarea id="notes" name="notes" rows="3" data-k-ph="f-notes-ph" placeholder="Previous experiences, sensitivities, medical conditions…"></textarea>
         </div>
-        <button type="submit" class="btn btn-solid btn-full" data-k="f-submit">Open WhatsApp with my message</button>
+        <button type="submit" class="action-btn action-fill"><span class="plus" aria-hidden="true">+</span><span data-k="f-submit">Open WhatsApp with my message</span></button>
         <p class="form-foot" data-k="f-foot">Or call <a href="tel:+966593339600">+966 59 333 9600</a></p>
       </form>
     </div>
@@ -236,29 +325,45 @@
 
 </main>
 
-<footer class="site-foot">
-  <div class="wrap foot-grid">
-    <div>
-      <strong data-k="foot-name">Dr. Alaa Aljameel</strong>
-      <p data-k="foot-role">Consultant Pediatric Dentist &amp; Special Needs Dentistry Consultant</p>
-      <p class="foot-creds" data-k="foot-creds">BDS · MSc · Pediatric Certificate · American Board · Canadian Fellowship (RCDC)</p>
+<!-- ── footer ───────────────────────────────────────────── -->
+<footer class="footer">
+  <div class="footer-cta">
+    <div class="reveal">
+      <h2 data-k="foot-cta-h">Ready to make your child's next dental visit an easy one?</h2>
+      <a class="action-btn action-light" href="#book"><span class="plus" aria-hidden="true">+</span><span data-k="cl-cta">Book a visit</span></a>
     </div>
-    <div>
-      <strong data-k="foot-where">Where</strong>
-      <p data-k="foot-addr">Confident Clinic<br>Northern Ring Road, At Taawun<br>Riyadh 12478, Saudi Arabia</p>
-    </div>
-    <div>
-      <strong data-k="foot-contact">Contact</strong>
-      <p>
-        <a href="tel:+966593339600">+966 59 333 9600</a><br>
-        <a href="https://wa.me/966593339600" target="_blank" rel="noopener noreferrer" data-k="foot-wa">WhatsApp</a><br>
-        <a href="https://www.instagram.com/dr.alaaaljameel/" target="_blank" rel="noopener noreferrer">@dr.alaaaljameel</a><br>
-        <a href="https://confident.sa/" target="_blank" rel="noopener noreferrer" data-k="foot-clinic">confident.sa</a>
-      </p>
-    </div>
+    <figure class="footer-img reveal"><img src="assets/clinic-reception.jpg" width="900" height="1600" loading="lazy" alt="Reception area at Confident Clinic"></figure>
   </div>
-  <div class="wrap foot-base">
-    <p data-k="foot-legal">© 2026 Dr. Alaa Aljameel. Clinic photography courtesy of Confident Clinic.</p>
+  <div class="footer-watermark" aria-hidden="true" data-k="foot-watermark">CONSULT</div>
+  <div class="footer-content">
+    <div class="footer-brand">
+      <div class="brand-name" data-k="foot-name">Dr. Alaa Aljameel</div>
+      <div class="footer-col-title" data-k="foot-about">About</div>
+      <div class="footer-line" data-k="foot-role">Consultant Pediatric Dentist &amp; Special Needs Dentistry Consultant</div>
+      <div class="footer-col-title" data-k="foot-where">Where</div>
+      <div class="footer-line" data-k="foot-addr">Confident Clinic<br>Northern Ring Road, At Taawun<br>Riyadh 12478, Saudi Arabia</div>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title" data-k="foot-site">Site</div>
+      <a href="#about" data-k="nav-about">About</a>
+      <a href="#special" data-k="nav-special">Special Needs</a>
+      <a href="#services" data-k="nav-services">Services</a>
+      <a href="#guidance" data-k="nav-guidance">For Parents</a>
+      <a href="#clinic" data-k="nav-clinic">The Clinic</a>
+    </div>
+    <div class="footer-col">
+      <div class="footer-col-title" data-k="foot-contact">Contact</div>
+      <a href="tel:+966593339600" dir="ltr">+966 59 333 9600</a>
+      <a href="https://wa.me/966593339600" target="_blank" rel="noopener noreferrer" data-k="foot-wa">WhatsApp</a>
+      <a href="https://www.instagram.com/dr.alaaaljameel/" target="_blank" rel="noopener noreferrer" dir="ltr">@dr.alaaaljameel</a>
+      <a href="https://confident.sa/" target="_blank" rel="noopener noreferrer" dir="ltr">confident.sa</a>
+      <div class="footer-col-title" data-k="foot-creds-t">Credentials</div>
+      <div class="footer-line" data-k="foot-creds">BDS · MSc · Pediatric Certificate · American Board · Canadian Fellowship (RCDC)</div>
+    </div>
+    <div class="footer-note">
+      <span data-k="foot-legal">© 2026 Dr. Alaa Aljameel</span>
+      <span data-k="foot-demo">Demo site — photography courtesy of Confident Clinic</span>
+    </div>
   </div>
 </footer>
 

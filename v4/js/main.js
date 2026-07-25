@@ -1,6 +1,7 @@
-/* Dr. Alaa Aljameel — bilingual engine, WhatsApp booking, mobile nav.
-   No dependencies. The English copy lives in index.html; Arabic lives here and is
-   swapped in on toggle, with the original English cached on first switch. */
+/* Dr. Alaa Aljameel — Version 4
+   Bilingual engine, WhatsApp booking, fullscreen menu, scroll reveals and parallax.
+   No dependencies: the motion that Dr. Majid's Version Two got from GSAP + Lenis is
+   hand-written here so nothing external can break the demo. */
 
 (function () {
   'use strict';
@@ -11,6 +12,9 @@
     'skip': 'تخطَّ إلى المحتوى',
     'brand-name': 'د. آلاء الجميل',
     'brand-role': 'استشارية طب أسنان الأطفال',
+    'menu-label': 'القائمة',
+    'menu-close': 'إغلاق',
+    'watermark': 'الجميل',
 
     'nav-about': 'نبذة',
     'nav-special': 'ذوو الاحتياجات الخاصة',
@@ -21,31 +25,44 @@
 
     'hero-eyebrow': 'الرياض · حي التعاون',
     'hero-h1': 'رعاية أسنان متخصصة لكل طفل في الرياض — بما في ذلك الأطفال من ذوي الاحتياجات الخاصة',
-    'hero-lede': 'أنا الدكتورة آلاء الجميل، استشارية طب أسنان الأطفال. أعتني بأسنان الأطفال بالطريقة اللطيفة — بالوقت والصبر والتدريب المتخصص الذي تستحقه تجربة الطفل الأولى مع طبيب الأسنان.',
-    'pill-1': 'البورد الأمريكي',
-    'pill-2': 'الزمالة الكندية · RCDC',
-    'pill-3': 'بكالوريوس · ماجستير · شهادة أسنان الأطفال',
     'cta-book': 'احجز عبر واتساب',
-    'cta-call': 'اتصل: ‎+966 59 333 9600',
-    'hero-trust': 'رعاية على مستوى استشاري · تدريب على ذوي الاحتياجات الخاصة · بالعربية والإنجليزية',
-    'badge-strong': 'د. آلاء الجميل',
-    'badge-span': 'طب أسنان الأطفال وذوي الاحتياجات الخاصة',
+    'disc-1': 'طب أسنان الأطفال',
+    'disc-2': 'أسنان ذوي الاحتياجات الخاصة',
+    'disc-3': 'الرعاية الوقائية',
+    'explore': 'استكشاف +',
+    'lbl-cred': 'الاعتماد المهني',
 
-    't1-num': 'أمريكا', 't1-lbl': 'شهادة البورد الأمريكي',
-    't2-num': 'كندا',   't2-lbl': 'الزمالة الكندية RCDC',
-    't3-num': 'ماجستير','t3-lbl': 'ماجستير وشهادة أسنان الأطفال',
-    't4-num': 'AR / EN','t4-lbl': 'الرعاية بالعربية والإنجليزية',
+    't1-lbl': 'شهادة البورد الأمريكي',
+    't2-lbl': 'الزمالة الكندية RCDC',
+    't3-lbl': 'ماجستير وشهادة أسنان الأطفال',
+    't4-lbl': 'الرعاية بالعربية والإنجليزية',
+
+    'lbl-glance': 'نظرة سريعة',
+    's1-c': 'اعتماد على مستوى البورد',
+    's2-c': 'تخصصان: الأطفال وذوو الاحتياجات الخاصة',
+    's3-n': 'ماجستير',
+    's3-c': 'ماجستير وشهادة أسنان الأطفال',
+    's4-c': 'لغتان في العيادة',
+    's5-n': 'الرياض',
+    's5-c': 'حي التعاون، طريق الدائري الشمالي',
 
     'about-eyebrow': 'لماذا الاختصاص',
     'about-h2': 'طبيب أسنان الأطفال ليس مجرد طبيب أسنان يعالج الأطفال',
     'about-p1': 'طب أسنان الأطفال تخصص قائم بذاته. يشمل كيفية نمو أسنان الطفل، وكيف تُشكّل العادات الفك، وكيف نعالج طفلاً قلقاً في الرابعة من عمره دون أن نُخيفه، وكيف نكتشف المشكلات التي لا تظهر إلا في فم ما زال ينمو.',
     'about-p2': 'تدريبي في هذا تحديداً: بكالوريوس جراحة الفم والأسنان، ودرجة الماجستير، وشهادة في طب أسنان الأطفال، وشهادة البورد الأمريكي، وزمالة الكلية الملكية لأطباء الأسنان في كندا.',
-    'about-p3': 'وما يعنيه ذلك لطفلك ببساطة: مواعيد دون استعجال، وشرح قبل أي إجراء، وطبيبة رأت هذا القلق بعينه مرات كثيرة من قبل.',
     'about-link': 'احجز موعد طفلك',
+
+    'typo-1': 'لطيفة',
+    'typo-2': 'متخصصة',
+    'typo-3': 'دون استعجال',
+    'typo-note': 'ثلاثة أمور تُبنى عليها كل زيارة — مهما كان ما يقلق طفلك عند دخوله.',
 
     'sp-eyebrow': 'اهتمام خاص',
     'sp-h2': 'طب الأسنان للأطفال من ذوي الاحتياجات الخاصة',
     'sp-lede': 'إلى جانب طب أسنان الأطفال، أنا استشارية في طب أسنان ذوي الاحتياجات الخاصة. كثير من الأسر يُقال لها إن طفلها «صعب العلاج». وغالباً ما يحتاج الأمر إلى وقت أطول، وأسلوب مختلف، وشخص مدرَّب على ذلك.',
+    'pn-1': 'الإيقاع',
+    'pn-2': 'الروتين',
+    'pn-3': 'الشراكة',
     'sp-c1-h': 'وقت كافٍ دون استعجال',
     'sp-c1-p': 'مواعيد تسير على إيقاع طفلك لا على إيقاع الجدول — بما في ذلك زيارات تعارف قصيرة لا يجري فيها أي إجراء علاجي إطلاقاً.',
     'sp-c2-h': 'روتين يمكن توقّعه',
@@ -54,16 +71,21 @@
     'sp-c3-p': 'أنتم أدرى بطفلكم. أخبروني بما يُهدّئه وما يُثير قلقه، ونبني الزيارة على ذلك.',
     'sp-note': 'إذا كان طفلك يعاني من حالة حسّية أو تطورية أو طبية جعلت زيارات الأسنان صعبة من قبل، فأخبرني بذلك عند الحجز — هذه المعلومة مفيدة فعلاً.',
 
+    'q1-plain': 'الأطفال غالباً أسهل في التعامل عندما يشعرون بالهدوء والطمأنينة من والديهم.',
+
     'sv-eyebrow': 'ما أقدّمه',
     'sv-h2': 'رعاية للأطفال، من أول سن',
-    'sv-1-h': 'الزيارة الأولى والفحص الدوري', 'sv-1-p': 'تعريف لطيف بطبيب الأسنان، ويفضَّل قبل ظهور أي ألم.',
-    'sv-2-h': 'الفلورايد وسد الشقوق',        'sv-2-p': 'إجراءات وقائية بسيطة وسريعة توقف التسوّس قبل أن يبدأ.',
-    'sv-3-h': 'الحشوات والترميمات',          'sv-3-p': 'للأسنان اللبنية والدائمة، بطريقة يستطيع الطفل تحمّلها.',
-    'sv-4-h': 'رعاية ذوي الاحتياجات الخاصة', 'sv-4-p': 'رعاية على مستوى استشاري تتكيّف مع احتياجات طفلك وقدرته على التحمّل.',
-    'sv-5-h': 'قلق الأسنان وتوجيه السلوك',   'sv-5-p': 'للطفل الذي مرّ بتجربة سيئة، أو لم يزر الطبيب من قبل إطلاقاً.',
-    'sv-6-h': 'متابعة النمو والعادات',       'sv-6-p': 'مصّ الإبهام، وتأخر الأسنان أو ازدحامها، وكيف تنمو الإطباقة.',
-    'sv-7-h': 'إرشاد وقائي للأهل',           'sv-7-p': 'توجيهات للتنظيف والتغذية والفلورايد تناسب روتين أسرة حقيقية.',
-    'sv-8-h': 'طوارئ الأسنان',               'sv-8-p': 'سن مخلوعة أو مكسورة أو مؤلمة — اتصل بأسرع وقت ممكن.',
+    'rw-1': 'الوقاية',
+    'rw-2': 'العلاج',
+    'rw-3': 'الطمأنينة',
+    'sv-1-h': 'الزيارة الأولى والفحص الدوري', 'sv-1-p': 'تعريف لطيف بطبيب الأسنان',
+    'sv-2-h': 'الفلورايد وسد الشقوق',        'sv-2-p': 'وقاية قبل أن يبدأ التسوّس',
+    'sv-3-h': 'الحشوات والترميمات',          'sv-3-p': 'للأسنان اللبنية والدائمة',
+    'sv-4-h': 'رعاية ذوي الاحتياجات الخاصة', 'sv-4-p': 'على مستوى استشاري، تتكيّف مع طفلك',
+    'sv-5-h': 'قلق الأسنان وتوجيه السلوك',   'sv-5-p': 'للطفل الخائف من طبيب الأسنان',
+    'sv-6-h': 'متابعة النمو والعادات',       'sv-6-p': 'مصّ الإبهام، الازدحام، نمو الإطباق',
+    'sv-7-h': 'إرشاد وقائي للأهل',           'sv-7-p': 'التنظيف والتغذية والفلورايد',
+    'sv-8-h': 'طوارئ الأسنان',               'sv-8-p': 'سن مخلوعة أو مكسورة أو مؤلمة',
 
     'g-eyebrow': 'بكلماتي',
     'g-h2': 'ثلاثة أمور أكرّرها على الأهل دائماً',
@@ -81,6 +103,9 @@
     'cl-addr': 'عيادة كونفيدنت، طريق الدائري الشمالي، التعاون، الرياض 12478، المملكة العربية السعودية',
     'cl-cta': 'احجز موعداً',
     'cl-link': 'زيارة موقع كونفيدنت',
+    'lbl-clinic': 'عيادة كونفيدنت',
+    'visit-map': 'احصل على الاتجاهات',
+    'visit-call': 'اتصل بالعيادة',
 
     'bk-eyebrow': 'الحجز',
     'bk-h2': 'أخبرني عن طفلك',
@@ -106,183 +131,165 @@
     'f-submit': 'افتح واتساب برسالتي',
     'f-foot': 'أو اتصل على <a href="tel:+966593339600">‎+966 59 333 9600</a>',
 
+    'foot-cta-h': 'هل أنت مستعد لتكون زيارة طفلك القادمة لطبيب الأسنان سهلة؟',
+    'foot-watermark': 'استشارة',
     'foot-name': 'د. آلاء الجميل',
     'foot-role': 'استشارية طب أسنان الأطفال وذوي الاحتياجات الخاصة',
-    'foot-creds': 'بكالوريوس · ماجستير · شهادة أسنان الأطفال · البورد الأمريكي · الزمالة الكندية (RCDC)',
+    'foot-about': 'نبذة',
     'foot-where': 'الموقع',
     'foot-addr': 'عيادة كونفيدنت<br>طريق الدائري الشمالي، حي التعاون<br>الرياض 12478، السعودية',
+    'foot-site': 'أقسام الموقع',
     'foot-contact': 'التواصل',
     'foot-wa': 'واتساب',
-    'foot-clinic': 'confident.sa',
-    'foot-legal': '© 2026 د. آلاء الجميل. صور العيادة بإذن من عيادة كونفيدنت.',
-
-    'faq-eyebrow': 'أسئلة شائعة',
-    'faq-h2': 'ما يسأل عنه الأهل قبل الحجز',
-    'faq-q1': 'في أي عمر أُحضر طفلي أول مرة؟',
-    'faq-a1': 'التوصية العامة هي أول زيارة عند ظهور أول سن أو حول عمر السنة. الزيارة المبكرة تكون تعارفاً أكثر منها علاجاً، وهذا بالضبط ما يجعل الزيارات اللاحقة أسهل.',
-    'faq-q2': 'طفلي خائف جداً وبكى في عيادة سابقة. ماذا نفعل؟',
-    'faq-a2': 'أخبريني بذلك عند الحجز. نبدأ بزيارة قصيرة للتعارف دون أي إجراء، ونبني الثقة تدريجياً. الطفل الذي مرّ بتجربة سيئة يحتاج وقتاً، لا ضغطاً.',
-    'faq-q3': 'هل تعالجين الأطفال من ذوي الاحتياجات الخاصة؟',
-    'faq-a3': 'نعم — هذا أحد تخصصاتي كاستشارية. أخبريني بحالة طفلك وما يهدّئه أو يزعجه، ونخطط للزيارة على هذا الأساس.',
-    'faq-q4': 'هل يمكنني البقاء مع طفلي أثناء العلاج؟',
-    'faq-a4': 'في الغالب نعم، وغالباً ما يكون ذلك مفيداً. هدوء الأهل ينتقل إلى الطفل مباشرة.',
-    'faq-q5': 'بأي لغة تتعاملين؟',
-    'faq-a5': 'بالعربية والإنجليزية.',
-
-    'st-1-lbl': 'شهادة بورد أمريكية',
-    'st-2-lbl': 'زمالة كندية (RCDC)',
-    'st-3-lbl': 'تخصصان: أطفال وذوو احتياجات خاصة',
-    'st-4-lbl': 'لغتان في العيادة',
-
-    'em-h2': 'إصابة في الأسنان الآن؟',
-    'em-p': 'ابقَ هادئاً، ثم اتصل مباشرة. في إصابات الأسنان الوقت مهم — الاتصال أسرع من الرسالة.',
-    'em-cta': 'اتصل الآن',
-
-    'hero-form-h': 'احجز في أقل من دقيقة',
-    'cmp-eyebrow': 'اختيار الطبيب',
-    'cmp-h2': 'عيادة أسنان عامة مقابل أخصائية أسنان أطفال',
-    'cmp-lede': 'كلاهما يستطيع علاج طفلك. الفرق في ما بُني عليه التدريب.',
-    'cmp-th1': 'ما يهم في حالة الطفل',
-    'cmp-th2': 'عيادة أسنان عامة',
-    'cmp-th3': 'أخصائية أسنان أطفال',
-    'cmp-r1': 'تدريب مخصص للأطفال',
-    'cmp-r1a': 'غير مطلوب',
-    'cmp-r1b': 'سنوات إضافية بعد كلية طب الأسنان',
-    'cmp-r2': 'التعامل مع الخوف والسلوك',
-    'cmp-r2a': 'يُكتسب بالممارسة',
-    'cmp-r2b': 'مهارة أساسية ويُختبر فيها',
-    'cmp-r3': 'الأطفال ذوو الاحتياجات الخاصة',
-    'cmp-r3a': 'يختلف كثيراً',
-    'cmp-r3b': 'تخصص فرعي معترف به',
-    'cmp-r4': 'متابعة نمو الإطباق',
-    'cmp-r4a': 'غالباً عرضية',
-    'cmp-r4b': 'تُتابَع دورياً عبر الزمن',
-    'cmp-note': 'هذا وصف للتخصص بشكل عام — وليس حكماً على أي عيادة بعينها.'
+    'foot-creds-t': 'المؤهلات',
+    'foot-creds': 'بكالوريوس · ماجستير · شهادة أسنان الأطفال · البورد الأمريكي · الزمالة الكندية (RCDC)',
+    'foot-legal': '© 2026 د. آلاء الجميل',
+    'foot-demo': 'موقع تجريبي — صور العيادة بإذن من عيادة كونفيدنت'
   };
 
-  /* ---------- language ---------- */
-
   var htmlEl = document.documentElement;
-  var btn = document.getElementById('langToggle');
+  var langBtn = document.getElementById('langToggle');
 
+  /* ── language ─────────────────────────────────────── */
   function applyLang(lang) {
     var isAr = lang === 'ar';
     var nodes = document.querySelectorAll('[data-k]');
-
     for (var i = 0; i < nodes.length; i++) {
-      var el = nodes[i];
-      var key = el.getAttribute('data-k');
+      var el = nodes[i], key = el.getAttribute('data-k');
       if (el.dataset.enHtml === undefined) el.dataset.enHtml = el.innerHTML;
-      if (isAr) {
-        if (AR[key] !== undefined) el.innerHTML = AR[key];
-      } else {
-        el.innerHTML = el.dataset.enHtml;
-      }
+      if (isAr) { if (AR[key] !== undefined) el.innerHTML = AR[key]; }
+      else { el.innerHTML = el.dataset.enHtml; }
     }
-
-    var phNodes = document.querySelectorAll('[data-k-ph]');
-    for (var j = 0; j < phNodes.length; j++) {
-      var p = phNodes[j];
-      var pk = p.getAttribute('data-k-ph');
+    var ph = document.querySelectorAll('[data-k-ph]');
+    for (var j = 0; j < ph.length; j++) {
+      var p = ph[j], pk = p.getAttribute('data-k-ph');
       if (p.dataset.enPh === undefined) p.dataset.enPh = p.getAttribute('placeholder') || '';
-      if (isAr) {
-        if (AR[pk] !== undefined) p.setAttribute('placeholder', AR[pk]);
-      } else {
-        p.setAttribute('placeholder', p.dataset.enPh);
-      }
+      if (isAr) { if (AR[pk] !== undefined) p.setAttribute('placeholder', AR[pk]); }
+      else { p.setAttribute('placeholder', p.dataset.enPh); }
     }
-
     htmlEl.setAttribute('lang', isAr ? 'ar' : 'en');
     htmlEl.setAttribute('dir', isAr ? 'rtl' : 'ltr');
-
-    if (btn) {
-      btn.textContent = isAr ? 'English' : 'العربية';
-      btn.setAttribute('aria-label', isAr ? 'Switch language to English' : 'Switch language to Arabic');
+    if (langBtn) {
+      langBtn.textContent = isAr ? 'English' : 'العربية';
+      langBtn.setAttribute('aria-label', isAr ? 'Switch language to English' : 'Switch language to Arabic');
     }
     try { localStorage.setItem('lang', lang); } catch (e) {}
   }
 
-  if (btn) {
-    btn.addEventListener('click', function () {
+  if (langBtn) {
+    langBtn.addEventListener('click', function () {
       applyLang(htmlEl.getAttribute('lang') === 'ar' ? 'en' : 'ar');
     });
   }
-
   var saved = null;
   try { saved = localStorage.getItem('lang'); } catch (e) {}
   if (saved === 'ar') applyLang('ar');
 
-  /* ---------- booking form -> prefilled WhatsApp ---------- */
+  /* ── fullscreen menu ──────────────────────────────── */
+  var menu = document.getElementById('fullMenu');
+  var menuBtn = document.getElementById('menuToggle');
+  var menuClose = document.getElementById('menuClose');
 
+  function openMenu() {
+    menu.hidden = false;
+    void menu.offsetWidth;               // force reflow so the transition runs
+    menu.classList.add('open');
+    menuBtn.setAttribute('aria-expanded', 'true');
+    document.body.style.overflow = 'hidden';
+  }
+  function closeMenu() {
+    menu.classList.remove('open');
+    menuBtn.setAttribute('aria-expanded', 'false');
+    document.body.style.overflow = '';
+    window.setTimeout(function () {
+      if (!menu.classList.contains('open')) menu.hidden = true;
+    }, 560);
+  }
+  if (menu && menuBtn) {
+    menuBtn.addEventListener('click', function () {
+      if (menu.classList.contains('open')) closeMenu(); else openMenu();
+    });
+    if (menuClose) menuClose.addEventListener('click', closeMenu);
+    Array.prototype.forEach.call(menu.querySelectorAll('a'), function (a) {
+      a.addEventListener('click', closeMenu);
+    });
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape' && menu.classList.contains('open')) closeMenu();
+    });
+  }
+
+  /* ── booking form → prefilled WhatsApp ────────────── */
   var form = document.getElementById('bookForm');
   if (form) {
     form.addEventListener('submit', function (ev) {
       ev.preventDefault();
       var isAr = htmlEl.getAttribute('lang') === 'ar';
-
       function val(id) {
         var el = document.getElementById(id);
         if (!el) return '';
         if (el.tagName === 'SELECT') return el.options[el.selectedIndex].textContent.trim();
         return el.value.trim();
       }
-
       var L = isAr
         ? { open: 'السلام عليكم د. آلاء، أود حجز موعد لطفلي.', name: 'الاسم', age: 'العمر', reason: 'سبب الزيارة', time: 'الوقت المفضّل', notes: 'ملاحظات' }
         : { open: "Hello Dr. Alaa, I'd like to book a visit for my child.", name: 'Child', age: 'Age', reason: 'Reason', time: 'Preferred time', notes: 'Notes' };
-
       var lines = [L.open, ''];
       if (val('childName')) lines.push(L.name + ': ' + val('childName'));
       if (val('childAge'))  lines.push(L.age + ': ' + val('childAge'));
       lines.push(L.reason + ': ' + val('reason'));
       lines.push(L.time + ': ' + val('timing'));
       if (val('notes')) lines.push(L.notes + ': ' + val('notes'));
-
-      var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n'));
-      window.open(url, '_blank', 'noopener');
+      window.open('https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(lines.join('\n')), '_blank', 'noopener');
     });
   }
 
-  /* ---------- mobile nav ---------- */
+  /* ── motion: reveals, lit words, parallax ─────────── */
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
-  var menuBtn = document.getElementById('menuToggle');
-  var nav = document.getElementById('primaryNav');
-  if (menuBtn && nav) {
-    menuBtn.addEventListener('click', function () {
-      var open = nav.classList.toggle('is-open');
-      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
-    });
-    nav.addEventListener('click', function (e) {
-      if (e.target.tagName === 'A') {
-        nav.classList.remove('is-open');
-        menuBtn.setAttribute('aria-expanded', 'false');
-      }
-    });
-  }
-
-  /* ---------- FAQ accordion (used by version 3) ---------- */
-
-  var faqs = document.querySelectorAll('.faq-q');
-  for (var f = 0; f < faqs.length; f++) {
-    faqs[f].addEventListener('click', function () {
-      var expanded = this.getAttribute('aria-expanded') === 'true';
-      this.setAttribute('aria-expanded', expanded ? 'false' : 'true');
-      var panel = document.getElementById(this.getAttribute('aria-controls'));
-      if (panel) panel.hidden = expanded;
-    });
-  }
-
-  /* ---------- scroll reveal ---------- */
-
-  if ('IntersectionObserver' in window && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
-    var io = new IntersectionObserver(function (entries) {
-      entries.forEach(function (en) {
-        if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+  if (!reduced && 'IntersectionObserver' in window) {
+    var revealIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) { e.target.classList.add('in'); revealIO.unobserve(e.target); }
       });
-    }, { rootMargin: '0px 0px -60px 0px' });
-    document.querySelectorAll('.reveal').forEach(function (el) { io.observe(el); });
+    }, { rootMargin: '0px 0px -60px 0px', threshold: 0.08 });
+    Array.prototype.forEach.call(document.querySelectorAll('.reveal'), function (el) { revealIO.observe(el); });
+
+    var wordIO = new IntersectionObserver(function (entries) {
+      entries.forEach(function (e) {
+        if (e.isIntersecting) e.target.classList.add('lit');
+        else e.target.classList.remove('lit');
+      });
+    }, { rootMargin: '0px 0px -22% 0px', threshold: 0.5 });
+    Array.prototype.forEach.call(document.querySelectorAll('.rw'), function (el) { wordIO.observe(el); });
   } else {
-    document.querySelectorAll('.reveal').forEach(function (el) { el.classList.add('in'); });
+    Array.prototype.forEach.call(document.querySelectorAll('.reveal'), function (el) { el.classList.add('in'); });
+    Array.prototype.forEach.call(document.querySelectorAll('.rw'), function (el) { el.classList.add('lit'); });
+  }
+
+  // lightweight parallax — replaces Majid V2's GSAP ScrollTrigger version
+  if (!reduced) {
+    var layers = Array.prototype.slice.call(
+      document.querySelectorAll('.hero-bg img, .panel-bg img, .parallax img')
+    );
+    var ticking = false;
+    function shift() {
+      var vh = window.innerHeight;
+      for (var i = 0; i < layers.length; i++) {
+        var img = layers[i];
+        var box = img.parentElement.getBoundingClientRect();
+        if (box.bottom < -200 || box.top > vh + 200) continue;
+        // -1 (below viewport) → +1 (above viewport)
+        var progress = (box.top + box.height / 2 - vh / 2) / (vh / 2 + box.height / 2);
+        img.style.transform = 'translate3d(0,' + (progress * -5).toFixed(2) + '%,0)';
+      }
+      ticking = false;
+    }
+    function onScroll() {
+      if (!ticking) { ticking = true; window.requestAnimationFrame(shift); }
+    }
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    shift();
   }
 
 })();
